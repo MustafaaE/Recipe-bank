@@ -30,9 +30,7 @@
                     @endif
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            {{ Auth::user()->name }}
-                        </a>
+                        <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
                     </li>
 
                         <div class="nav-item" >
