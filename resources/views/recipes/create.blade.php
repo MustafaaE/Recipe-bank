@@ -29,7 +29,7 @@
                         <option>Dessert</option>
                     </select>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
                         <label for="preptime">Prep time</label>
                         <input type="number" class="form-control" placeholder="Prep time in minutes">
@@ -41,6 +41,30 @@
                     <div class="col">
                         <label for="servings">Servings</label>
                         <input type="number" class="form-control" placeholder="Total servings">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <label for="ingredient">Ingredient</label>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                        <label for="amount">amount</label>
+                        <input type="number" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="unit">Select unit</label>
+                            <select class="form-control">
+                                <option>tsp</option>
+                                <option>tbsp</option>
+                                <option>g</option>
+                                <option>kg</option>
+                                <option>ml</option>
+                                <option>dl</option>
+                                <option>l</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </form>
