@@ -20,6 +20,8 @@ class CreateRecipesTable extends Migration
             $table->string('description');
             $table->string('how_to');
             $table->integer('cooking_time');
+            $table->integer('prep_time');
+            $table->integer('servings');
             $table->foreignId('user_id')->references('id')->on('users');
         });
     }
