@@ -15,11 +15,9 @@ use App\Http\Controllers\RecipeController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[App\Http\Controllers\RecipeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/recipes/index', [App\Http\Controllers\RecipeController::class, 'index'])->name('index');
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'userProfile'])->name('profile');
 Auth::routes();
