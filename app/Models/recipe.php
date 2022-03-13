@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
     // use HasFactory;
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function categories()
+    public function category()
     {
         return $this->hasOne(Category::class);
     }

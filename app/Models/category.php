@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function recipes()
+    public function recipe()
     {
         return $this->belongsTo(Recipe::class);
     }

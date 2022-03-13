@@ -16,7 +16,12 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $recipes = Recipe::all();
+
+        return view('home', [
+            'recipes' => $recipes
+        ]);
     }
 
     /**
