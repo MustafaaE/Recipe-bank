@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\recipe;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Auth;
 use App\Models\Ingredient;
+
 
 class RecipeController extends Controller
 {
@@ -15,7 +17,6 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -42,21 +43,20 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\recipe  $recipe
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(recipe $recipe)
+    public function show(Recipe $recipe)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\recipe  $recipe
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(recipe $recipe)
+    public function edit(Recipe $recipe)
     {
         //
     }
@@ -65,10 +65,10 @@ class RecipeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\recipe  $recipe
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, recipe $recipe)
+    public function update(Request $request, Recipe $recipe)
     {
         //
     }
@@ -76,10 +76,10 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\recipe  $recipe
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(recipe $recipe)
+    public function destroy(Recipe $recipe)
     {
         //
     }
