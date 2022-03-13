@@ -2,19 +2,19 @@
 
 @section('content')
 
-
-    <div class="d-flex flex-wrap">
-
+{{-- 
+    <div class="d-flex justify-content-center"> --}}
     @if(count($recipes) > 0)
     @foreach ($recipes as $recipe)
-        <div class="row">
+    <div class="col justify-content-center">
+        
                 <h2>{{$recipe->title}}</h2>
-                {{$recipe->description}}
-                {{$recipe->user_id}}
-            </div>
-    
+                <span>{{$recipe->description}}</span>
+                <span>{{$recipe->user->name}}</span>
+    </div>
     @endforeach
         
     @endif
-</div>
+
+{{-- </div> --}}
 @endsection
