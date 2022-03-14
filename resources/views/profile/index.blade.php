@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    
+    <div class="users-name">
+       <p> {{ auth()->user()->name }}'s profile</p>
+    </div>
 
-{{-- 
-    <div class="d-flex justify-content-center"> --}}
     @if(count($recipes) > 0)
     @foreach ($recipes as $recipe)
     <div class="col justify-content-center">
@@ -18,5 +21,8 @@
         <p>No recipes found</p>
     @endif
 
-{{-- </div> --}}
+
+</div>
+
+
 @endsection
