@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ingredient;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class IngredientController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,21 +41,23 @@ class IngredientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ingredient  $ingredient
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ingredient $ingredient)
+    public function show(User $user)
     {
-        //
+        return view('profile/show' , [
+            'user'  => $user,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ingredient  $ingredient
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ingredient $ingredient)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +66,10 @@ class IngredientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ingredient  $ingredient
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ingredient $ingredient)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +77,10 @@ class IngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ingredient  $ingredient
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ingredient $ingredient)
+    public function destroy($id)
     {
         //
     }

@@ -2,21 +2,23 @@
 
 @section('content')
 
-{{-- 
-    <div class="d-flex justify-content-center"> --}}
-    @if(count($recipes) > 0)
-    @foreach ($recipes as $recipe)
-    <div class="col justify-content-center">
-        
-                <h2>{{$recipe->title}}</h2>
-                <span>{{$recipe->description}}</span>
-                <span>{{$recipe->user->name}}</span>
-    </div>
-    @endforeach
-    
+
+    @if (count($recipes) > 0)
+        @foreach ($recipes as $recipe)
+            <div class="d-flex flex-column align-items-center">
+                <div class="card w-50 mb-4">
+                    <a href="/recipes/{{ $recipe->id }}">
+                        <h2>{{ $recipe->title }}</h2>
+                    </a>
+                    <p>{{ $recipe->description }}</p>
+                    <span>{{ $recipe->user->name }}</span>
+                </div>
+
+            </div>
+        @endforeach
     @else
-        <p>No recipes found</p>
+        <p>No recipes found </p>
     @endif
 
-{{-- </div> --}}
+    </div>
 @endsection
