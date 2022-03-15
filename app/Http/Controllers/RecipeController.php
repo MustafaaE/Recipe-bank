@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Auth;
@@ -50,11 +52,12 @@ class RecipeController extends Controller
         $recipe = new Recipe();
         $recipe->title = request('title');
         $recipe->description = request('description');
-        $recipe->how_to= request('how_to');
-        $recipe->prep_time= request('prep_time');
+        $recipe->how_to = request('how_to');
+        $recipe->prep_time = request('prep_time');
         $recipe->cooking_time = request('cooking_time');
         $recipe->servings = request('servings');
         $recipe->user_id = Auth::user()->id;
+
         // $validInput = $request->validate([
         //     'title' => 'required|min:3',
         //     'description' => 'required',
@@ -65,6 +68,10 @@ class RecipeController extends Controller
 
         // ]);
         $recipe->save();
+        $category = new Category();
+        $category->category = request('category');
+        $category->recipe_id = $recipe->id;
+        $category->save();
         return redirect(route('home'));
     }
 

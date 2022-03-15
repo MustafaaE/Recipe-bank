@@ -16,16 +16,16 @@
                 <label for="how_to">Directions</label>
                 <textarea class="form-control" name="how_to" rows="4" placeholder="Fill in directions" required></textarea>
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                     <label for="category">Select category</label>
-                    <select class="form-control">
+                    <select name="category" class="form-control">
                         <option>Breakfast</option>
                         <option>Lunch</option>
                         <option>Supper</option>
                         <option>Dinner</option>
                         <option>Dessert</option>
                     </select>
-                </div> --}}
+                </div> 
             <div class="row mt-3">
                 <div class="col">
                     <label for="prep_time">Prep time</label>
