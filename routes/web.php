@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\RecipeController;
 |
 */
 
-Route::get('/',[App\Http\Controllers\RecipeController::class, 'index'])->name('home');
+Route::get('/',[RecipeController::class, 'index'])->name('home');
+// Route::get('/profile',[UserController::class, 'show'])->name('profile');
 
 // Route::get('/recipes/index', [App\Http\Controllers\RecipeController::class, 'index'])->name('index');
 

@@ -22,8 +22,8 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $recipes = Recipe::all();
+    {
+        $recipes = Recipe::latest()->get();
         return view('home', [
             'recipes' => $recipes
         ]);
@@ -47,7 +47,25 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipe = new Recipe();
+        $recipe->title = request('title');
+        $recipe->description = request('description');
+        $recipe->how_to= request('how_to');
+        $recipe->prep_time= request('prep_time');
+        $recipe->cooking_time = request('cooking_time');
+        $recipe->servings = request('servings');
+        $recipe->user_id = Auth::user()->id;
+        // $validInput = $request->validate([
+        //     'title' => 'required|min:3',
+        //     'description' => 'required',
+        //     'how_to' => 'required',
+        //     'prep_time' => 'required',
+        //     'cooking_time' => 'required',
+        //     'servings' => 'required',
+
+        // ]);
+        $recipe->save();
+        return redirect(route('home'));
     }
 
     /**
