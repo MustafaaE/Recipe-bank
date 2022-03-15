@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Auth::routes();
 Route::resource('/home', HomeController::class);
 
 Route::resource('/recipes', RecipeController::class);
+Route::resource('/categories', CategoryController::class);

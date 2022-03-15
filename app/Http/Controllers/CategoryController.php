@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Cache;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,10 +13,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Category $category){
+        $categories = Category::where('category', $category)->get();
+        return view('categories/index', [
+            'categories' => $categories
+        ]);
+
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +53,10 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
-        //
+        return view('categories/show', [
+            'category' => $category,
+        ]);
+
     }
 
     /**
