@@ -17,7 +17,7 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/',[RecipeController::class, 'index'])->name('home');
+Route::get('/', [RecipeController::class, 'index'])->name('home');
 // Route::get('/profile',[UserController::class, 'show'])->name('profile');
 
 // Route::get('/recipes/index', [App\Http\Controllers\RecipeController::class, 'index'])->name('index');
@@ -28,8 +28,10 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::resource('/home', HomeController::class);
-
 Route::resource('/recipes', RecipeController::class);
 Route::resource('/categories', CategoryController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/recipes/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
+});
