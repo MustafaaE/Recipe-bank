@@ -67,18 +67,20 @@ class RecipeController extends Controller
         //     'servings' => 'required',
 
         // ]);
-        $amount = request('amount');
-        $unit = request('unit');
-        $recipe->ingredients()->sync([$amount , $unit]);
+        //  $amount = request('amount');
+        //$unit = request('unit');
+        //$recipe = Recipe::find(0)
+        // $recipe->ingredients()->attach([$amount, $unit]);
         $recipe->save();
+
         $category = new Category();
         $category->category = request('category');
         $category->recipe_id = $recipe->id;
         $category->save();
 
-        $ingredient = new Ingredient();
-        $ingredient->ingredient = request('ingredient');
-        $ingredient->save();
+        //$ingredient = new Ingredient();
+        //$ingredient->ingredient = request('ingredient');
+        //$ingredient->save();
         // $recipe->ingredients(['amount' =>  request('amount'), 'unit'=> request('unit')]);
         return redirect(route('home'));
     }
@@ -104,7 +106,9 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        //
+        return view('recipes/edit', [
+            'recipe' => $recipe,
+        ]);
     }
 
     /**
@@ -116,7 +120,14 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //
+        $validInput = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        $recipe->update($validInput);
+
+
+        return redirect()->route('recipes.show', ['recipe' => $recipe]);
     }
 
     /**

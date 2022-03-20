@@ -40,6 +40,7 @@
                     <input type="number" class="form-control" name="servings" placeholder="Total servings" required>
                 </div>
             </div>
+            <!--
             <div class="row mt-3">
                     <div class="col">
                         <label for="ingredient">Ingredient</label>
@@ -67,7 +68,7 @@
                         <button type="button" class="btn btn-success mt-4" id="testjs">+</button>
                         <button type="button" class="btn btn-danger mt-4" id="testjs">-</button>
                     </div>
-                </div>
+                </div>-->
                 <button type="submit" class="btn btn-success mt-3">Create</button>
         </form>
     </div>

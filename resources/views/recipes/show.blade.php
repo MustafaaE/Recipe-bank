@@ -16,6 +16,9 @@
                         href="{{ route('categories.index', ['category' => $recipe->category->id]) }}">{{ $recipe->category->category }}
                 </p></a>
                 <p>Written by: {{ $recipe->user->name }}</p>
+                @if($recipe->user_id == auth()->id())
+                <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="btn btn-primary">Edit</a>
+                @endif
             </div>
 
         </div>
