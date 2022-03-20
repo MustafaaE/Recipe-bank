@@ -49,7 +49,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('file')) {
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png'
+            ]);
+        }
         $recipe = new Recipe();
+        $filename = $request->file('file')->getClientOriginalName();
+        $request->file->move('storage/images', $filename);
+        $recipe->image = $filename;
         $recipe->title = request('title');
         $recipe->description = request('description');
         $recipe->how_to = request('how_to');
@@ -120,10 +128,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        $validInput = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
+        $validInput = $request->all();
         $recipe->update($validInput);
 
 

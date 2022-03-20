@@ -4,7 +4,8 @@
     <div class="d-flex flex-column align-items-center">
         <div class="card" style="width: 700px;">
             <div class="card-body">
-                <h1 class="card-title">{{ $recipe->title }}</h1>
+                <h1 class="card-header">{{ $recipe->title }}</h1>
+                <img class="card-img-top" src="{{ URL('storage/images/' . $recipe->image)}}" alt="test" width="500px">
                 <p class="card-text">{{ $recipe->description }}</p>
                 <p class="card-text">Instructions: {{ $recipe->how_to }}</p>
                 <div class="d-flex justify-content-between">

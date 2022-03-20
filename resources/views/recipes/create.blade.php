@@ -2,8 +2,12 @@
 
 @section('content')
     <div class="container">
-        <form method="POST" action="{{ route('recipes.store') }}">
+        <form method="POST" action="{{ route('recipes.store')}}" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+                <label for="image">Choose image file</label>
+                <input type="file" name="file" required>
+            </div>
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" placeholder="Recipes name" required>

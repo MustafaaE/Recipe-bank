@@ -14,11 +14,11 @@
             </div>
             <div class="form-group">
                 <label for="description">Recipe summary</label>
-                <textarea class="form-control" name="description" value="{{$recipe->description}}" required></textarea>
+                <textarea class="form-control" name="description" value="{{ old('description') ?:$recipe->description}}" required>{{$recipe->description}}</textarea>
             </div>
             <div class="form-group">
                 <label for="how_to">Directions</label>
-                <textarea class="form-control" name="how_to" rows="4" value="{{$recipe->how_to}}" required></textarea>
+                <textarea class="form-control" name="how_to" rows="4" value="{{ old('how_to') ?:$recipe->how_to}}" required>{{$recipe->how_to}}</textarea>
             </div>
             <div class="form-group">
                     <label for="category">Select category</label>
@@ -33,15 +33,15 @@
             <div class="row mt-3">
                 <div class="col">
                     <label for="prep_time">Prep time</label>
-                    <input type="number" class="form-control" name="prep_time" placeholder="Prep time in minutes" required>
+                    <input type="number" class="form-control" name="prep_time" value="{{$recipe->prep_time}}" placeholder="total prep time" required>
                 </div>
                 <div class="col">
                     <label for="cooking_time">Cooking time</label>
-                    <input type="number" class="form-control" name="cooking_time" placeholder="Cooking time in minutes" required>
+                    <input type="number" class="form-control" name="cooking_time" value="{{$recipe->cooking_time}}" placeholder="Total cooking time" required>
                 </div>
                 <div class="col">
                     <label for="servings">Servings</label>
-                    <input type="number" class="form-control" name="servings" placeholder="Total servings" required>
+                    <input type="number" class="form-control" name="servings" value="{{$recipe->servings}}" placeholder="Total servings" required>
                 </div>
             </div>
            
