@@ -13,6 +13,10 @@ class Category extends Model
 
     public function recipe()
     {
-        return $this->belongsToMany(Recipe::class, 'recipe_id', 'id');
+        return $this->belongsToMany(Recipe::class);
+    }
+
+    public function recipes(){
+        return $this->hasMany(Recipe::class);
     }
 }

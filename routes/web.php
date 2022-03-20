@@ -29,9 +29,13 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/home', HomeController::class);
-Route::resource('/recipes', RecipeController::class);
 Route::resource('/categories', CategoryController::class);
+Route::resource('/recipes', RecipeController::class);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/recipes/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/recipes/create', [RecipeController::class, 'create'])->name('create');
+// });
+
+
+
+

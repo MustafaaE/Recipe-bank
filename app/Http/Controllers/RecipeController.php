@@ -67,11 +67,19 @@ class RecipeController extends Controller
         //     'servings' => 'required',
 
         // ]);
+        $amount = request('amount');
+        $unit = request('unit');
+        $recipe->ingredients()->sync([$amount , $unit]);
         $recipe->save();
         $category = new Category();
         $category->category = request('category');
         $category->recipe_id = $recipe->id;
         $category->save();
+
+        $ingredient = new Ingredient();
+        $ingredient->ingredient = request('ingredient');
+        $ingredient->save();
+        // $recipe->ingredients(['amount' =>  request('amount'), 'unit'=> request('unit')]);
         return redirect(route('home'));
     }
 

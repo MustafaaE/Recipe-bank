@@ -1,4 +1,4 @@
 
-@foreach($categories as $cat)
-<p>{{ $cat->category }}</p>
+@foreach($category->recipes->id as $cat)
+<p>{{ $cat->id }}</p>
 @endforeach

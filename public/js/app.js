@@ -5320,6 +5320,12 @@ Vue.component('example-component', (__webpack_require__(/*! ./components/Example
 var app = new Vue({
   el: '#app'
 });
+var button = document.getElementById("testjs");
+button.addEventListener("click", effect);
+
+function effect() {
+  alert("Hello");
+}
 
 /***/ }),
 

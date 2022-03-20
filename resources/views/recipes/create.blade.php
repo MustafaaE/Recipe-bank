@@ -40,19 +40,19 @@
                     <input type="number" class="form-control" name="servings" placeholder="Total servings" required>
                 </div>
             </div>
-            {{-- <div class="row mt-3">
+            <div class="row mt-3">
                     <div class="col">
                         <label for="ingredient">Ingredient</label>
-                        <input type="text" class="form-control" placeholder="">
+                        <input type="text" name="ingredient" class="form-control" placeholder="">
                     </div>
                     <div class="col">
                         <label for="amount">amount</label>
-                        <input type="number" class="form-control" placeholder="">
+                        <input type="number" name="amount" class="form-control" placeholder="">
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="unit">Select unit</label>
-                            <select class="form-control">
+                            <select class="form-control" name="unit">
                                 <option>tsp</option>
                                 <option>tbsp</option>
                                 <option>g</option>
@@ -63,9 +63,12 @@
                             </select>
                         </div>
                     </div>
-                </div> --}}
-
-                <button type="submit" class="btn btn-success">Create</button>
+                    <div class="col">
+                        <button type="button" class="btn btn-success mt-4" id="testjs">+</button>
+                        <button type="button" class="btn btn-danger mt-4" id="testjs">-</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Create</button>
         </form>
     </div>
 @endsection
