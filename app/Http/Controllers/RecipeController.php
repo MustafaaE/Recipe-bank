@@ -49,15 +49,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        $recipe = new Recipe();
         if($request->hasFile('file')) {
             $request->validate([
                 'image' => 'mimes:jpeg,bmp,png'
             ]);
-        }
-        $recipe = new Recipe();
         $filename = $request->file('file')->getClientOriginalName();
         $request->file->move('storage/images', $filename);
         $recipe->image = $filename;
+        }
         $recipe->title = request('title');
         $recipe->description = request('description');
         $recipe->how_to = request('how_to');
@@ -75,16 +75,22 @@ class RecipeController extends Controller
         //     'servings' => 'required',
 
         // ]);
-        //  $amount = request('amount');
-        //$unit = request('unit');
-        //$recipe = Recipe::find(0)
-        // $recipe->ingredients()->attach([$amount, $unit]);
         $recipe->save();
 
         $category = new Category();
         $category->category = request('category');
         $category->recipe_id = $recipe->id;
         $category->save();
+        
+        $ingredient = new Ingredient();
+        $ingredient = Ingredient::firstOrCreate(
+            ['ingredient' => request('ingredient')]
+        );
+        $ingredient->save();  
+
+        $amount = request('amount');
+        $unit = request('unit');
+        $recipe->ingredients()->attach($ingredient->id, ['amount' => $amount, 'unit' => $unit]);
 
         //$ingredient = new Ingredient();
         //$ingredient->ingredient = request('ingredient');

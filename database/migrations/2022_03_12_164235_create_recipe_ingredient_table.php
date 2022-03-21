@@ -14,7 +14,6 @@ class CreateRecipeIngredientTable extends Migration
     public function up()
     {
         Schema::create('ingredient_recipe', function (Blueprint $table) {
-            $table->id();
             $table->timestamps();
             $table->foreignId('recipe_id')->references('id')->on('recipes');
             $table->foreignId('ingredient_id')->references('id')->on('ingredients');
