@@ -19,6 +19,12 @@
                 <p>Written by: {{ $recipe->user->name }}</p>
                 @if($recipe->user_id == auth()->id())
                 <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="btn btn-primary">Edit</a>
+                    <form class="d-inline block" action="{{ route('recipes.destroy', ['recipe' => $recipe]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete recipe</button>
+                    </form>
+
                 @endif
             </div>
 

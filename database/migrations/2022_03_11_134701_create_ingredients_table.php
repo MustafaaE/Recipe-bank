@@ -17,7 +17,7 @@ class CreateIngredientsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('ingredient');
-            $table->foreignId('recipe_id')->references('id')->on('recipes');
+            $table->foreignId('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
         });
     }
 
