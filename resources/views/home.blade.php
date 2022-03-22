@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('partials/status')
+
 <div class="d-flex flex-column align-items-center">
     @if (count($recipes) > 0)
         @foreach ($recipes as $recipe)

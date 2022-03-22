@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { create, remove } = require('lodash');
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -32,10 +34,81 @@ const app = new Vue({
 });
 
 
-let button = document.getElementById("testjs");
+let button = document.getElementById("add-ingredient");
 
-button.addEventListener("click",effect);
+let parentContainer = document.getElementById("ingredient-container");
 
-function effect(){
-    alert("Hello");
+button.addEventListener("click",()=>{
+    let rowParent = document.createElement("div");
+    rowParent.className = "row mt-3";
+    addIngredientToColumn(rowParent);
+    addAmountToColumn(rowParent);
+    addUnitToColumn(rowParent);
+});
+
+
+function addIngredientToColumn(rowParent){
+    let column = document.createElement("div");
+    column.className = "col";
+    let ingredient = document.createElement("input");
+    ingredient.className = "form-control";
+    ingredient.setAttribute("type", "text");
+    ingredient.setAttribute("name", "ingredient[]");
+    let ingredientLabel = document.createElement("label");
+    ingredientLabel.innerHTML = "Ingredient";
+    column.appendChild(ingredientLabel);
+    column.appendChild(ingredient);
+    rowParent.appendChild(column);
+    parentContainer.appendChild(rowParent);
 }
+
+function addAmountToColumn(rowParent){
+    let column = document.createElement("div");
+    column.className = "col";
+    let amount = document.createElement("input");
+    amount.className = "form-control";
+    amount.setAttribute("type", "number");
+    amount.setAttribute("name", "amount[]");
+    let amountLabel = document.createElement("label");
+    amountLabel.innerHTML = "amount";
+    column.appendChild(amountLabel);
+    column.appendChild(amount);
+    rowParent.appendChild(column);
+    parentContainer.appendChild(rowParent);
+}
+
+function addUnitToColumn(rowParent){
+    let column = document.createElement("div");
+    column.className = "col";
+    let unit = document.createElement("select");
+    unit.className = "form-control";
+    unit.setAttribute("name", "unit[]");
+    let tsp = document.createElement("option");
+    tsp.innerHTML = "tsp";
+    unit.appendChild(tsp);
+    let tbsp= document.createElement("option");
+    tbsp.innerHTML = "tbsp";
+    unit.appendChild(tbsp);
+    let g = document.createElement("option");
+    g.innerHTML = "g";
+    unit.appendChild(g);
+    let kg = document.createElement("option");
+    kg.innerHTML = "kg";
+    unit.appendChild(kg);
+    let ml = document.createElement("option");
+    ml.innerHTML = "ml";
+    unit.appendChild(ml);
+    let dl = document.createElement("option");
+    dl.innerHTML = "dl";
+    unit.appendChild(dl);
+    let l = document.createElement("option");
+    l.innerHTML = "l";
+    unit.appendChild(l);
+    let unitLabel = document.createElement("label");
+    unitLabel.innerHTML = "unit";
+    column.appendChild(unitLabel);
+    column.appendChild(unit);
+    rowParent.appendChild(column);
+    parentContainer.appendChild(rowParent);
+}
+

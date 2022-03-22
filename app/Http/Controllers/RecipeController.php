@@ -146,7 +146,7 @@ class RecipeController extends Controller
     public function destroy(Recipe $recipe)
     {
         $recipe->delete();
-        return redirect()->route('recipes.index')->with('status', 'Recipe deleted');
+        return redirect()->route('home')->with('status', 'Recipe deleted');
     }
 
     public function saveToPivot(Recipe $recipe, Ingredient $ingredient, $amount, $unit){
