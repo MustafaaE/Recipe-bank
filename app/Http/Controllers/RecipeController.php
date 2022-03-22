@@ -50,13 +50,13 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $recipe = new Recipe();
-        if($request->hasFile('file')) {
+        if ($request->hasFile('file')) {
             $request->validate([
                 'image' => 'mimes:jpeg,bmp,png'
             ]);
-        $filename = $request->file('file')->getClientOriginalName();
-        $request->file->move('storage/images', $filename);
-        $recipe->image = $filename;
+            $filename = $request->file('file')->getClientOriginalName();
+            $request->file->move('storage/images', $filename);
+            $recipe->image = $filename;
         }
         $recipe->title = request('title');
         $recipe->description = request('description');
@@ -65,16 +65,6 @@ class RecipeController extends Controller
         $recipe->cooking_time = request('cooking_time');
         $recipe->servings = request('servings');
         $recipe->user_id = Auth::user()->id;
-
-        // $validInput = $request->validate([
-        //     'title' => 'required|min:3',
-        //     'description' => 'required',
-        //     'how_to' => 'required',
-        //     'prep_time' => 'required',
-        //     'cooking_time' => 'required',
-        //     'servings' => 'required',
-
-        // ]);
         $recipe->save();
 
         $category = new Category();
@@ -82,16 +72,21 @@ class RecipeController extends Controller
         $category->recipe_id = $recipe->id;
         $category->save();
         
-        $ingredient = new Ingredient();
-        $ingredient = Ingredient::firstOrCreate(
-            ['ingredient' => request('ingredient')]
-        );
-        $ingredient->save();  
-
         $amount = request('amount');
-        $unit = request('unit');
-        $recipe->ingredients()->attach($ingredient->id, ['amount' => $amount, 'unit' => $unit]);
+        // $ingredient = new Ingredient();
+        foreach (request('ingredient') as $ing) {
+                $i = 0;
+                $ingredient = Ingredient::firstOrCreate(
+                ['ingredient' => $ing]
+                );
+                $this->saveToPivot($recipe, $ingredient,$amount[$i]);
+                $i++;
+            }
 
+        //  foreach(request('amount') as $am){
+            // $recipe->ingredients()->attach($ingredient->id,['amount' => request('amount')]);
+        //  }
+        //  $recipe->ingredients()->attach($ingredient->id, ['amount' => $amount]);
         //$ingredient = new Ingredient();
         //$ingredient->ingredient = request('ingredient');
         //$ingredient->save();
@@ -151,5 +146,10 @@ class RecipeController extends Controller
     {
         $recipe->delete();
         return redirect()->route('recipes.index')->with('status', 'Recipe deleted');
+    }
+
+    public function saveToPivot(Recipe $recipe, Ingredient $ingredient, $amount){
+        $recipe->ingredients()->attach($ingredient->id,['amount' => $amount]);
+
     }
 }
