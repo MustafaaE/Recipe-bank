@@ -73,13 +73,14 @@ class RecipeController extends Controller
         $category->save();
         
         $amount = request('amount');
+        $unit = request('unit');
         // $ingredient = new Ingredient();
         foreach (request('ingredient') as $ing) {
                 $i = 0;
                 $ingredient = Ingredient::firstOrCreate(
                 ['ingredient' => $ing]
                 );
-                $this->saveToPivot($recipe, $ingredient,$amount[$i]);
+                $this->saveToPivot($recipe, $ingredient,$amount[$i],$unit[0]);
                 $i++;
             }
 
@@ -148,8 +149,8 @@ class RecipeController extends Controller
         return redirect()->route('recipes.index')->with('status', 'Recipe deleted');
     }
 
-    public function saveToPivot(Recipe $recipe, Ingredient $ingredient, $amount){
-        $recipe->ingredients()->attach($ingredient->id,['amount' => $amount]);
+    public function saveToPivot(Recipe $recipe, Ingredient $ingredient, $amount, $unit){
+        $recipe->ingredients()->attach($ingredient->id,['amount' => $amount, 'unit' =>$unit]);
 
     }
 }

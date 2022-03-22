@@ -51,7 +51,21 @@
                     </div>
                     <div class="col">
                         <label for="amount[]">amount</label>
-                        <input type="text" name="amount[]" class="form-control" placeholder="">
+                        <input type="number" name="amount[]" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="unit">Select unit</label>
+                            <select class="form-control" name="unit[]">
+                                <option>tsp</option>
+                                <option>tbsp</option>
+                                <option>g</option>
+                                <option>kg</option>
+                                <option>ml</option>
+                                <option>dl</option>
+                                <option>l</option>
+                            </select>
+                        </div>
                     </div>
                     {{-- <div class="col">
                         <button type="button" class="btn btn-success mt-4" id="testjs">+</button>
@@ -65,7 +79,21 @@
                     </div>
                     <div class="col">
                         <label for="amount">amount</label>
-                        <input type="text" name="amount[]" class="form-control" placeholder="">
+                        <input type="number" name="amount[]" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="unit">Select unit</label>
+                            <select class="form-control" name ="unit[]">
+                                <option>tsp</option>
+                                <option>tbsp</option>
+                                <option>g</option>
+                                <option>kg</option>
+                                <option>ml</option>
+                                <option>dl</option>
+                                <option>l</option>
+                            </select>
+                        </div>
                     </div>
                 </div> 
                 {{-- <div class="row mt-3">

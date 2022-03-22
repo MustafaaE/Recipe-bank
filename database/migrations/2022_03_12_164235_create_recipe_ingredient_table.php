@@ -17,7 +17,8 @@ class CreateRecipeIngredientTable extends Migration
             $table->timestamps();
             $table->foreignId('recipe_id')->references('id')->on('recipes');
             $table->foreignId('ingredient_id')->references('id')->on('ingredients');
-            $table->string('amount');
+            $table->integer('amount');
+            $table->string('unit');
         });
     }
 
