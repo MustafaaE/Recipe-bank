@@ -1,23 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="d-flex flex-column align-items-center">
+    @if (count($recipes) > 0)
+        @foreach ($recipes as $recipe)
+                <div class="card w-50 mb-4">
+                        <h2 class="card-header"> <a class="card-title text-decoration-none" id="h2title" href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</h2></a>
+                        <a class="" href="/recipes/{{ $recipe->id }}">
+                    <img class="card-img-top" src="{{ URL('storage/images/'. $recipe->image)}}" alt="test" width="500px" height="550px"> </a>
+                    <p>{{ $recipe->description }}</p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <span>{{ $recipe->user->name }}</span>
+                        <span>{{ $recipe->created_at }}</span>
+                    </div>
 
-                    {{ __('You are logged in!') }}
                 </div>
-            </div>
-        </div>
+        @endforeach
+    @else
+        <p>No recipes found </p>
+    @endif
+
     </div>
-</div>
 @endsection

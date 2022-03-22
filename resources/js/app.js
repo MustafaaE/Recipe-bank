@@ -30,3 +30,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+let button = document.getElementById("testjs");
+
+button.addEventListener("click",effect);
+
+function effect(){
+    alert("Hello");
+}
