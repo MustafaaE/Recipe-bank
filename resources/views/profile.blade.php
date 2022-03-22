@@ -6,6 +6,7 @@
         <p class="testar"> {{ auth()->user()->name }}'s profile</p>
         
      </div>  
+     <p>hej</p>
 </div>
 
 @endsection
