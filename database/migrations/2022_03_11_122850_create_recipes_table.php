@@ -24,6 +24,7 @@ class CreateRecipesTable extends Migration
             $table->integer('prep_time');
             $table->integer('servings');
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

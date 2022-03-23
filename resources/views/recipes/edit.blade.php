@@ -1,7 +1,7 @@
 @extends('layouts/app')
 @section('content')
     <div>
-        <h1>Edit Recipe post</h1>
+        <h1 class="text-center">Edit {{ $recipe->title }} recipe </h1>
 
         <div class="container">
             <form method="POST" action="{{ route('recipes.update', ['recipe' => $recipe]) }}">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="d-flex flex-column align-items-center">
         <div class="card" style="width: 700px;">
             <div class="card-body" id="postcard-bg">
@@ -30,9 +31,11 @@
                     <p>Cooking time: {{ $recipe->cooking_time }}</p>
                     <span>Servings: {{ $recipe->servings }}</span>
                 </div>
+                @foreach ($category as $item)
                 <p>Category: <a
-                        href="{{ route('categories.index', ['category' => $recipe->category->id]) }}">{{ $recipe->category->category }}
+                        href="{{ route('categories.show', ['category' => $item]) }}">{{ $item->category }}
                 </p></a>
+                @endforeach
                 <p>Written by: {{ $recipe->user->name }}</p>
                 <div class="d-flex justify-content-evenly">
                 @if($recipe->user_id == auth()->id())

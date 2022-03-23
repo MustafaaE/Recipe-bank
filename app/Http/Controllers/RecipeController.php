@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Ingredient;
 
-
 class RecipeController extends Controller
 {
 
@@ -68,12 +67,12 @@ class RecipeController extends Controller
         $recipe->cooking_time = request('cooking_time');
         $recipe->servings = request('servings');
         $recipe->user_id = Auth::user()->id;
-        $recipe->save();
 
-        $category = new Category();
-        $category->category = request('category');
-        $category->recipe_id = $recipe->id;
-        $category->save();
+        $category = Category::firstOrCreate(
+            ['category' => request('category')]
+        );
+        $recipe->category_id = $category->id;
+        $recipe->save();
 
         $amount = request('amount');
         $unit = request('unit');
@@ -97,8 +96,11 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
+        $category = Category::where('id', $recipe->category_id)->get();
+     
         return view('recipes/show', [
             'recipe' => $recipe,
+            'category' => $category,
         ]);
     }
 

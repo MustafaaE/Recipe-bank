@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Recipe;
 use App\Models\Category;
 use Cache;
 use Illuminate\Http\Request;
@@ -14,9 +14,10 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Category $category){
-        $categories = Category::where('id', $category->id)->get();
+        
         return view('categories/index', [
-            'categories' => $categories
+            // 'categories' => $categories,
+            // 'recipes' => $recipes,
         ]);
     }
     
@@ -52,8 +53,12 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
+        // $category = Category::where('id', $category->id)->get();
+        $recipes = Recipe::where('category_id', $category->id)->get();
+        // dd($recipes);
         return view('categories/show', [
             'category' => $category,
+            'recipes' => $recipes,
         ]);
 
     }
