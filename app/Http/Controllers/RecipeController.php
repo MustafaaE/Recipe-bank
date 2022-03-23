@@ -12,11 +12,6 @@ use App\Models\Ingredient;
 class RecipeController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     /**
      * Display a listing of the resource.
      *
@@ -97,7 +92,7 @@ class RecipeController extends Controller
     public function show(Recipe $recipe)
     {
         $category = Category::where('id', $recipe->category_id)->get();
-     
+
         return view('recipes/show', [
             'recipe' => $recipe,
             'category' => $category,
@@ -112,9 +107,12 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        return view('recipes/edit', [
-            'recipe' => $recipe,
-        ]);
+        if (Auth::check() == true) {
+            return view('recipes/edit', [
+                'recipe' => $recipe,
+            ]);
+        }
+        return redirect()->route('home');
     }
 
     /**

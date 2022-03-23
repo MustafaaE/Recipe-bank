@@ -20,7 +20,6 @@
                                 <span>Uploaded by: {{ $recipe->user->name }}</span>
                                 <span>{{ $recipe->created_at }}</span>
                             </div>
-
                         </div>
                     @endforeach
                 @else

@@ -4,11 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-const { create, remove } = require('lodash');
+const { create, remove } = require("lodash");
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue').default;
+window.Vue = require("vue").default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,7 +21,10 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,15 +33,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
 });
-
-
 
 let button = document.getElementById("add-ingredient");
 let parentContainer = document.getElementById("ingredient-container");
 
-button.addEventListener("click",()=>{
+button.addEventListener("click", () => {
     let rowParent = document.createElement("div");
     rowParent.className = "row mt-3";
     addIngredientToColumn(rowParent);
@@ -47,8 +48,7 @@ button.addEventListener("click",()=>{
     addDeleteButton(rowParent);
 });
 
-
-function addIngredientToColumn(rowParent){
+function addIngredientToColumn(rowParent) {
     let column = document.createElement("div");
     column.className = "col";
     let ingredient = document.createElement("input");
@@ -64,14 +64,14 @@ function addIngredientToColumn(rowParent){
     parentContainer.appendChild(rowParent);
 }
 
-function addAmountToColumn(rowParent){
+function addAmountToColumn(rowParent) {
     let column = document.createElement("div");
     column.className = "col";
     let amount = document.createElement("input");
     amount.className = "form-control";
     amount.setAttribute("type", "number");
     amount.setAttribute("name", "amount[]");
-    amount.setAttribute("min" , 0);
+    amount.setAttribute("min", 0);
     amount.required = true;
     let amountLabel = document.createElement("label");
     amountLabel.innerHTML = "amount";
@@ -81,7 +81,7 @@ function addAmountToColumn(rowParent){
     parentContainer.appendChild(rowParent);
 }
 
-function addUnitToColumn(rowParent){
+function addUnitToColumn(rowParent) {
     let column = document.createElement("div");
     column.className = "col";
     let unit = document.createElement("select");
@@ -90,7 +90,7 @@ function addUnitToColumn(rowParent){
     let tsp = document.createElement("option");
     tsp.innerHTML = "tsp";
     unit.appendChild(tsp);
-    let tbsp= document.createElement("option");
+    let tbsp = document.createElement("option");
     tbsp.innerHTML = "tbsp";
     unit.appendChild(tbsp);
     let g = document.createElement("option");
@@ -119,7 +119,7 @@ function addUnitToColumn(rowParent){
     parentContainer.appendChild(rowParent);
 }
 
-function addDeleteButton(rowParent){
+function addDeleteButton(rowParent) {
     let column = document.createElement("div");
     column.className = "col";
     let deleteRow = document.createElement("button");
@@ -130,10 +130,10 @@ function addDeleteButton(rowParent){
     column.appendChild(deleteRow);
     rowParent.appendChild(column);
     parentContainer.appendChild(rowParent);
-    deleteRow.addEventListener('click', addListener);
+    deleteRow.addEventListener("click", addListener);
 }
 
-let addListener = e => {
+let addListener = (e) => {
     let item = e.target.closest("div");
     item.parentElement.remove(item);
 };

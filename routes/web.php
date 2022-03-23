@@ -30,8 +30,3 @@ Auth::routes();
 Route::resource('/home', HomeController::class);
 Route::resource('/categories', CategoryController::class);
 Route::resource('/recipes', RecipeController::class);
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/recipes/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
-// });
-// Route::resource('/recipes', RecipeController::class);

@@ -15,10 +15,7 @@ class CategoryController extends Controller
      */
     public function index(Category $category){
         
-        return view('categories/index', [
-            // 'categories' => $categories,
-            // 'recipes' => $recipes,
-        ]);
+        // 
     }
     
 
@@ -53,9 +50,7 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
-        // $category = Category::where('id', $category->id)->get();
-        $recipes = Recipe::where('category_id', $category->id)->get();
-        // dd($recipes);
+        $recipes = Recipe::where('category_id', $category->id)->latest()->get();
         return view('categories/show', [
             'category' => $category,
             'recipes' => $recipes,
