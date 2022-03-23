@@ -5314,7 +5314,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
+Vue.component("example-component", (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -5322,7 +5322,7 @@ Vue.component('example-component', (__webpack_require__(/*! ./components/Example
  */
 
 var app = new Vue({
-  el: '#app'
+  el: "#app"
 });
 var button = document.getElementById("add-ingredient");
 var parentContainer = document.getElementById("ingredient-container");
@@ -5392,14 +5392,15 @@ function addUnitToColumn(rowParent) {
   var dl = document.createElement("option");
   dl.innerHTML = "dl";
   unit.appendChild(dl);
-  var l = document.createElement("option");
-  l.innerHTML = "l";
-  unit.appendChild(l);
+  var liter = document.createElement("option");
+  liter.innerHTML = "l";
+  unit.appendChild(liter);
   var pc = document.createElement("option");
-  l.innerHTML = "pc";
+  pc.innerHTML = "pc";
   unit.appendChild(pc);
   var unitLabel = document.createElement("label");
   unitLabel.innerHTML = "Select unit";
+  unit.required = true;
   column.appendChild(unitLabel);
   column.appendChild(unit);
   rowParent.appendChild(column);
@@ -5417,7 +5418,7 @@ function addDeleteButton(rowParent) {
   column.appendChild(deleteRow);
   rowParent.appendChild(column);
   parentContainer.appendChild(rowParent);
-  deleteRow.addEventListener('click', addListener);
+  deleteRow.addEventListener("click", addListener);
 }
 
 var addListener = function addListener(e) {
