@@ -13,7 +13,7 @@
                     <img class="card-img-top" src="{{ URL('storage/images/'. $recipe->image)}}" alt="test" width="500px" height="550px"> </a>
                     <p>{{ $recipe->description }}</p>
                     <div class="d-flex flex-row justify-content-between">
-                        <span>{{ $recipe->user->name }}</span>
+                        <span>Uploaded by: {{ $recipe->user->name }}</span>
                         <span>{{ $recipe->created_at }}</span>
                     </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -46,8 +47,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('profile/show' , [
+        $recipes = Auth::user()->recipes()->latest()->get();
+        return view('profile' , [
             'user'  => $user,
+            'recipes' => $recipes,
         ]);
     }
 

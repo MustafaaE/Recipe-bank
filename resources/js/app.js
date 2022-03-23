@@ -34,8 +34,8 @@ const app = new Vue({
 });
 
 
-let button = document.getElementById("add-ingredient");
 
+let button = document.getElementById("add-ingredient");
 let parentContainer = document.getElementById("ingredient-container");
 
 button.addEventListener("click",()=>{
@@ -44,6 +44,8 @@ button.addEventListener("click",()=>{
     addIngredientToColumn(rowParent);
     addAmountToColumn(rowParent);
     addUnitToColumn(rowParent);
+    // deleteButton();
+    addDeleteButton(rowParent);
 });
 
 
@@ -54,6 +56,7 @@ function addIngredientToColumn(rowParent){
     ingredient.className = "form-control";
     ingredient.setAttribute("type", "text");
     ingredient.setAttribute("name", "ingredient[]");
+    ingredient.required = true;
     let ingredientLabel = document.createElement("label");
     ingredientLabel.innerHTML = "Ingredient";
     column.appendChild(ingredientLabel);
@@ -112,3 +115,21 @@ function addUnitToColumn(rowParent){
     parentContainer.appendChild(rowParent);
 }
 
+function addDeleteButton(rowParent){
+    let column = document.createElement("div");
+    column.className = "col";
+    let deleteRow = document.createElement("button");
+    deleteRow.className = "btn btn-warning mt-4";
+    deleteRow.setAttribute("type", "button");
+    deleteRow.id = "add-ingredient";
+    deleteRow.innerHTML = "delete";
+    column.appendChild(deleteRow);
+    rowParent.appendChild(column);
+    parentContainer.appendChild(rowParent);
+    deleteRow.addEventListener('click', addListener);
+}
+
+let addListener = e => {
+    let item = e.target.closest("div");
+    item.parentElement.remove(item);
+};

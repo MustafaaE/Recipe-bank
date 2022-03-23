@@ -5331,7 +5331,9 @@ button.addEventListener("click", function () {
   rowParent.className = "row mt-3";
   addIngredientToColumn(rowParent);
   addAmountToColumn(rowParent);
-  addUnitToColumn(rowParent);
+  addUnitToColumn(rowParent); // deleteButton();
+
+  addDeleteButton(rowParent);
 });
 
 function addIngredientToColumn(rowParent) {
@@ -5341,6 +5343,7 @@ function addIngredientToColumn(rowParent) {
   ingredient.className = "form-control";
   ingredient.setAttribute("type", "text");
   ingredient.setAttribute("name", "ingredient[]");
+  ingredient.required = true;
   var ingredientLabel = document.createElement("label");
   ingredientLabel.innerHTML = "Ingredient";
   column.appendChild(ingredientLabel);
@@ -5398,6 +5401,25 @@ function addUnitToColumn(rowParent) {
   rowParent.appendChild(column);
   parentContainer.appendChild(rowParent);
 }
+
+function addDeleteButton(rowParent) {
+  var column = document.createElement("div");
+  column.className = "col";
+  var deleteRow = document.createElement("button");
+  deleteRow.className = "btn btn-warning mt-4";
+  deleteRow.setAttribute("type", "button");
+  deleteRow.id = "add-ingredient";
+  deleteRow.innerHTML = "delete";
+  column.appendChild(deleteRow);
+  rowParent.appendChild(column);
+  parentContainer.appendChild(rowParent);
+  deleteRow.addEventListener('click', addListener);
+}
+
+var addListener = function addListener(e) {
+  var item = e.target.closest("div");
+  item.parentElement.remove(item);
+};
 
 /***/ }),
 

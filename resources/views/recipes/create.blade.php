@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="how_to">Instructions</label>
-                <textarea class="form-control" name="how_to" rows="4" placeholder="Fill in directions" required></textarea>
+                <textarea class="form-control" name="how_to" rows="4" placeholder="Fill in instructions" required></textarea>
             </div>
             <div class="form-group">
                 <label for="category">Select category</label>
