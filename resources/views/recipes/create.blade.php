@@ -34,17 +34,15 @@
             <div class="row mt-3">
                 <div class="col">
                     <label for="prep_time">Prep time</label>
-                    <input type="number" class="form-control" name="prep_time" placeholder="Prep time in minutes"
-                        required>
+                    <input type="number" class="form-control" name="prep_time" placeholder="Prep time in minutes" min="0" required>
                 </div>
                 <div class="col">
                     <label for="cooking_time">Cooking time</label>
-                    <input type="number" class="form-control" name="cooking_time" placeholder="Cooking time in minutes"
-                        required>
+                    <input type="number" class="form-control" name="cooking_time" placeholder="Cooking time in minutes" min="0" required>
                 </div>
                 <div class="col">
                     <label for="servings">Servings</label>
-                    <input type="number" class="form-control" name="servings" placeholder="Total servings" required>
+                    <input type="number" class="form-control" name="servings" placeholder="Total servings" min="0" required>
                 </div>
             </div>
             <div id="ingredient-container">
@@ -55,7 +53,7 @@
                     </div>
                     <div class="col">
                         <label for="amount[]">amount</label>
-                        <input type="number" name="amount[]" class="form-control" placeholder="" required>
+                        <input type="number" name="amount[]" class="form-control" placeholder="" min="0" required>
                     </div>
                     <div class="col">
                         <div class="form-group">
@@ -68,6 +66,7 @@
                                 <option>ml</option>
                                 <option>dl</option>
                                 <option>l</option>
+                                <option>pc</option>
                             </select>
                         </div>
                     </div>

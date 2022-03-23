@@ -5331,8 +5331,7 @@ button.addEventListener("click", function () {
   rowParent.className = "row mt-3";
   addIngredientToColumn(rowParent);
   addAmountToColumn(rowParent);
-  addUnitToColumn(rowParent); // deleteButton();
-
+  addUnitToColumn(rowParent);
   addDeleteButton(rowParent);
 });
 
@@ -5359,6 +5358,8 @@ function addAmountToColumn(rowParent) {
   amount.className = "form-control";
   amount.setAttribute("type", "number");
   amount.setAttribute("name", "amount[]");
+  amount.setAttribute("min", 0);
+  amount.required = true;
   var amountLabel = document.createElement("label");
   amountLabel.innerHTML = "amount";
   column.appendChild(amountLabel);
@@ -5394,8 +5395,11 @@ function addUnitToColumn(rowParent) {
   var l = document.createElement("option");
   l.innerHTML = "l";
   unit.appendChild(l);
+  var pc = document.createElement("option");
+  l.innerHTML = "pc";
+  unit.appendChild(pc);
   var unitLabel = document.createElement("label");
-  unitLabel.innerHTML = "unit";
+  unitLabel.innerHTML = "Select unit";
   column.appendChild(unitLabel);
   column.appendChild(unit);
   rowParent.appendChild(column);

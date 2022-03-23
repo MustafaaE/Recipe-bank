@@ -6,8 +6,10 @@
             <div class="card-body" id="postcard-bg">
                 <h1 id="recipetitle" class="card-header d-flex flex-row justify-content-center">{{ $recipe->title }}</h1>
                 
+                @if($recipe->image)
                 <img class="card-img-top" src="{{ URL('storage/images/' . $recipe->image)}}" alt="test" width="500px">
-                <h3 class="card-text d-flex flex-row justify-content-center">{{ $recipe->description }}</h3>
+                @endif
+                <h3 class="card-text d-flex flex-row justify-content-center mt-2">{{ $recipe->description }}</h3>
               
                 <div class="d-flex justify-content-evenly">
                     <div class="card-text w-50 p-3">Ingredients:

@@ -14,7 +14,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Category $category){
-        $categories = Category::where('category', $category)->get();
+        $categories = Category::where('id', $category->id)->get();
         return view('categories/index', [
             'categories' => $categories
         ]);

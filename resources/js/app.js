@@ -44,7 +44,6 @@ button.addEventListener("click",()=>{
     addIngredientToColumn(rowParent);
     addAmountToColumn(rowParent);
     addUnitToColumn(rowParent);
-    // deleteButton();
     addDeleteButton(rowParent);
 });
 
@@ -72,6 +71,8 @@ function addAmountToColumn(rowParent){
     amount.className = "form-control";
     amount.setAttribute("type", "number");
     amount.setAttribute("name", "amount[]");
+    amount.setAttribute("min" , 0);
+    amount.required = true;
     let amountLabel = document.createElement("label");
     amountLabel.innerHTML = "amount";
     column.appendChild(amountLabel);
@@ -107,8 +108,11 @@ function addUnitToColumn(rowParent){
     let l = document.createElement("option");
     l.innerHTML = "l";
     unit.appendChild(l);
+    let pc = document.createElement("option");
+    l.innerHTML = "pc";
+    unit.appendChild(pc);
     let unitLabel = document.createElement("label");
-    unitLabel.innerHTML = "unit";
+    unitLabel.innerHTML = "Select unit";
     column.appendChild(unitLabel);
     column.appendChild(unit);
     rowParent.appendChild(column);
