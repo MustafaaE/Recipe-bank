@@ -29,12 +29,15 @@
                         </li>
                     @endif
                 @else
+                 
+                <li>
+                    <a class="btn btn-outline-secondary mx-5 " href="{{ route('recipes.create') }}" role="button">Create recipe</a>
+                    
+                 </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
                     </li>
-                    <li>
-                    <a class="btn btn-outline-primary" href="{{ route('recipes.create') }}" role="button">Create recipe</a>
-                 </li>
+                   
                         <div class="nav-item" >
                             <a class="nav-link" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

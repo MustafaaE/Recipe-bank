@@ -3,8 +3,8 @@
 @section('content')
     <div class="d-flex flex-column align-items-center">
         <div class="card" style="width: 700px;">
-            <div class="card-body">
-                <h1 class="card-header">{{ $recipe->title }}</h1>
+            <div class="card-body" id="postcard-bg">
+                <h1 id="recipetitle" class="card-header d-flex flex-row justify-content-center">{{ $recipe->title }}</h1>
                 
                 <img class="card-img-top" src="{{ URL('storage/images/' . $recipe->image)}}" alt="test" width="500px">
                 <h3 class="card-text d-flex flex-row justify-content-center">{{ $recipe->description }}</h3>
