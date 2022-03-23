@@ -8,7 +8,7 @@
                 <h1 id="recipetitle" class="card-header d-flex flex-row justify-content-center">{{ $recipe->title }}</h1>
                 
                 @if($recipe->image)
-                <img class="card-img-top" src="{{ URL('storage/images/' . $recipe->image)}}" alt="test" width="500px">
+                <img class="card-img-top" src="{{ URL('storage/images/' . $recipe->image)}}" alt="test" width="500px" height="500px">
                 @endif
                 <h3 class="card-text d-flex flex-row justify-content-center mt-2">{{ $recipe->description }}</h3>
               
