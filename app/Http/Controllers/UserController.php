@@ -48,7 +48,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $recipes = Auth::user()->recipes()->latest()->get();
-        return view('profile' , [
+        return view('profile', [
             'user'  => $user,
             'recipes' => $recipes,
         ]);

@@ -38,7 +38,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes/create');
+        if (Auth::check() == true) {
+            return view('recipes/create');
+        }
+        return redirect()->route('home');
     }
 
     /**

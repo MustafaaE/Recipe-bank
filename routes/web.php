@@ -17,6 +17,10 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::get('/', [RecipeController::class, 'index'])->name('home');
 
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'show'])->name('profile');
@@ -27,10 +31,7 @@ Route::resource('/home', HomeController::class);
 Route::resource('/categories', CategoryController::class);
 Route::resource('/recipes', RecipeController::class);
 
-
-Route::get('/recipes/create', function () {
-})->middleware('auth');
-
 // Route::middleware('auth')->group(function () {
-//     Route::get('/recipes/create', [RecipeController::class, 'create'])->name('create');
+//     Route::get('/recipes/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
 // });
+// Route::resource('/recipes', RecipeController::class);
