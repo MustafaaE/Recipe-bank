@@ -27,10 +27,10 @@ Route::resource('/home', HomeController::class);
 Route::resource('/categories', CategoryController::class);
 Route::resource('/recipes', RecipeController::class);
 
+
+Route::get('/recipes/create', function () {
+})->middleware('auth');
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/recipes/create', [RecipeController::class, 'create'])->name('create');
 // });
-
-
-
-
