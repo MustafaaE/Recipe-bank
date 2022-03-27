@@ -1,8 +1,8 @@
-#Recipe App 
+# Recipe App 
 
 Recipe App is a site where users can share recipes with other users and guests 
 
-##Installation
+## Installation
 
 Clone the directory and then run these commands
 
